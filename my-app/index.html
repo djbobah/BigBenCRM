@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="studentApp">
+  <head>
+    <title>Student Management</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="app/app.module.js"></script>
+    <script src="app/app.config.js"></script>
+    <script src="app/controllers/studentController.js"></script>
+    <script src="app/services/studentService.js"></script>
+  </head>
+  <body>
+    <div ng-controller="StudentController as ctrl">
+      <h1>Student Management</h1>
+      <form ng-submit="ctrl.addStudent()">
+        <input type="text" ng-model="ctrl.newStudent.name" placeholder="Name" />
+        <input type="text" ng-model="ctrl.newStudent.age" placeholder="Age" />
+        <button type="submit">Add Student</button>
+      </form>
+      <ul>
+        <li ng-repeat="student in ctrl.students">
+          {{student.name}} ({{student.age}})
+          <button ng-click="ctrl.editStudent(student)">Edit</button>
+          <button ng-click="ctrl.deleteStudent(student.id)">Delete</button>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>
